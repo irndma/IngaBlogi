@@ -1,6 +1,10 @@
 <?php
+include("include/settings.php"); // Andmebaasi seaded lae
+include("include/mysqli.php"); // Andmebaasi klass lae
+$db = new Db(); // Loo andmebaasi objekt
+
 $page = isset($_GET['page']) ? $_GET['page'] : 'index_'; //Kui on olemas page, siis võta see, muidu võta index
-$allowed_pages = ['index_', 'blog', 'contact', 'post1', 'post2', 'post3', 'post4', 'post5']; // .html failid
+$allowed_pages = ['post_add', 'index_', 'blog', 'contact', 'post']; // .html failid
 if(!in_array($page, $allowed_pages)) { 
     $page = 'index_'; // Kui on mingi kolmas leht peale indexi ja posti, siis alati too avalehele
 }
@@ -21,7 +25,7 @@ if(!in_array($page, $allowed_pages)) {
     </div>
 
     <div class="container">
-        <?php include("$page.html"); ?>
+        <?php include("$page.php"); ?>
 
     </div>
    
